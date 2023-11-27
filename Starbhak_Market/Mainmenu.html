@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=4, initial-scale=1.0">
+  <title>StarBhak Market</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <style>
+    /* Apply Josefin Sans font to all text elements */
+    *{
+      font-family: 'Lobster', cursive;
+      margin: 0;
+      padding: 0;
+      scroll-padding-top: 2rem;
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+      list-style: none;
+      text-decoration: none!important;
+    }
+
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 360px;
+      min-height: 100vh;
+      padding: 20px;
+      transition: 0.3s;
+      margin-top: 3%;
+    }
+
+    #sidebar.active {
+      left: 0;
+    }
+
+    .nav2 {
+      margin-top: 6rem;
+      margin-left: 13%;
+      width: 76%
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    button,
+    input,
+    select,
+    option,
+    navbar,
+    card-text,
+
+    .card {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 0 20px rgba(0, 115, 255, 0.2);
+    }
+
+    #button {
+      background-color: #ffffff; 
+      border-color: #1c599a;
+      box-shadow: 0 4px 6px rgba(43, 92, 226, 0.1); 
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #button:hover {
+      background-color: #1c599a;
+      border-color: #1c599a;
+      color: #ffffff;
+    }
+
+    #cart-icon:hover {
+      transform: scale(1.1);
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <nav class="navbar" style="background-color: rgb(0, 111, 171);">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1" style="color: white;"><p style="color: rgb(122, 222, 255); float: left; margin-right: 5px;">STARBHAK</p> Market</span>
+      </div>
+    </nav>
+
+    <div class="d-flex flex-column w-25 gap-3" style="padding: 10px 0 10px 10px;" id="sidebar">
+      <div class="card flex gap-3 p-2 w-100">
+        <i class='bx bx-x' id="close-cart" style="font-size: 1.5rem;"></i>
+        <select class="form-select bg-primary text-white text-center">
+
+          <option>Dine In</option>
+          <option>take away</option>
+
+        </select>
+        <button type="button" class="btn btn-primary" style="width: 100%; height: 50px; border-radius: 1px;"><img
+            src="assets/blossom.png" style="width: 40px; height: 40px;">  Starbhak Mart</button>
+      </div>
+
+      <!-- table -->
+      <div class="card bg-secondary" style="height: 400px;">
+        <div class="container" style=" height: 400px;overflow: auto;">
+          <br>
+          <ol class="list-group list-group-numbered" id="cart">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Batagor</h5>
+                5.000
+              </div>
+              <div>Quantity : <span id="quantity">1</span></div>
+            </li>
+            <button id="rem1">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart2">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>batagor kuah</h5>
+                5.000
+              </div>
+              <p>Quantity : <span id="quantity2">1</span></p>
+            </li>
+            <button id="rem2">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart3">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Nasi Kuning</h5>
+                6.000
+              </div>
+              <p>Quantity : <span id="quantity3">1</span></p>
+            </li>
+            <button id="rem3">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart4">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Nasgor</h5>
+                5.000
+              </div>
+              <p>Quantity : <span id="quantity4">1</span></p>
+            </li>
+            <button id="rem4">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart5">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Mie goreng</h5>
+                6.000
+              </div>
+              <p>Quantity : <span id="quantity5">1</span></p>
+            </li>
+            <button id="rem5">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart6">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Mie rebus</h5>
+                6.000
+              </div>
+              <p>Quantity : <span id="quantity6">1</span></p>
+            </li>
+            <button id="rem6">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart7">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Somay</h5>
+                5.000
+              </div>
+              <p>Quantity : <span id="quantity7">1</span></p>
+            </li>
+            <button id="rem7">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart8">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Es Jeruk</h5>
+                3.000
+              </div>
+              <p>Quantity : <span id="quantity8">1</span></p>
+            </li>
+            <button id="rem8">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart9">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Es Teh</h5>
+                3.000
+              </div>
+              <p>Quantity : <span id="quantity9">1</span></p>
+            </li>
+            <button id="rem9">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart10">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Mie Ayam</h5>
+                6.000
+              </div>
+              <p>Quantity : <span id="quantity10">1</span></p>
+            </li>
+            <button id="rem10">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart11">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Baso Bakar</h5>
+                2.000
+              </div>
+              <p>Quantity : <span id="quantity11">1</span></p>
+            </li>
+            <button id="re112">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart12">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Nasi Rames</h5>
+                10.000
+              </div>
+              <p>Quantity : <span id="quantity12">1</span></p>
+            </li>
+            <button id="rem12">Hapus pesanan</button>
+          </ol>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body" style="margin-left: 10px; margin-top: -15px; width: 100%;">
+          <p>Pajak : 10%</p>
+          <p>Total harga : Rp.<span id="tax">0.00</span></p>
+        </div>
+      </div>
+    </div>
+    
+  </header>
+
+
+  <!-- Take Away Dropdowns -->
+
+  <div class="d-flex w-100">
+
+   
+
+
+    <div class="">
+
+      <nav class="d-flex nav2 navbar-light bg-secondary px-4">
+        <a class="navbar-brand" style="color: white;">Mau beli apa?</a>
+      </nav>
+
+
+
+      <div class="col-md-1" style="z-index: 2; margin-left: 10%; width: 90%;">
+        <!-- konten makanan -->
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://dikemas.com/uploads/2019/05/resep-batagor-enak-yang-bisa-kamu-jadikan-ladang-bisnis.jpg"
+            class="card-img-top" id="clickableImage" style="width: auto; height: 9.5rem;">
+          <div class="card-body">
+            <p class="card-text" id="infoItm">Batagor</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga">5000</span></h5>
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://mutiarasww.files.wordpress.com/2018/04/batagorkuah.jpg?w=640"
+            class="card-img-top" id="clickableImage2" style="width: auto; height: 9.8rem;">
+          <div class="card-body">
+            <p class="card-text" id="infoItm2">Batagor kuah</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga2">5000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://mbokrum.com/wp-content/uploads/2020/12/komplit-1-1.jpg"
+            class="card-img-top" id="clickableImage3">
+          <div class="card-body">
+            <p class="card-text" id="infoItm3">Nasi Kuning</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga3">6000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://dcostseafood.id/wp-content/uploads/2022/04/Nasi-Goreng-spesial.jpg"
+            class="card-img-top" id="clickableImage4">
+          <div class="card-body">
+            <p class="card-text" id="infoItm4">Nasgor</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga4">5000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://img.kurio.network/62vRzJv6OHkcAWP-7peAScxVv5c=/1200x1200/filters:quality(80)/https://kurio-img.kurioapps.com/22/03/18/f9e900ff-e4eb-46bb-bfc8-28001e869414.jpe"
+            class="card-img-top" id="clickableImage5">
+          <div class="card-body">
+            <p class="card-text" id="infoItm5">Mie goreng</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga5">6000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://img.kurio.network/B_4Xc_8GQkJHajYvdqg5zBYnNkY=/1200x1200/filters:quality(80)/https://kurio-img.kurioapps.com/22/03/07/cb6a06b4-9fed-417a-a610-769aad84e849.jpe"
+            class="card-img-top" id="clickableImage6">
+          <div class="card-body">
+            <p class="card-text" id="infoItm6">Mie Rebus</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga6">6000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://s3-ap-southeast-1.amazonaws.com/media.go-jek.com/files/gofood/siomay%20setan%20pedas%20mampus.jpg" class="card-img-top"
+            id="clickableImage7">
+          <div class="card-body">
+            <p class="card-text" id="infoItm7">Somay</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga7">5000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://api.mahaputra.id/storage/upload/images/products/img_6349526c6acf71665749612.png" class="card-img-top"
+            id="clickableImage8">
+          <div class="card-body">
+            <p class="card-text" id="infoItm8">Es Jeruk</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga8">3000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://nilaigizi.com/assets/images/produk/produk_1578041377.jpg"
+            class="card-img-top" id="clickableImage9">
+          <div class="card-body">
+            <p class="card-text" id="infoItm9">Es Teh</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga9">3000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://cdn-brilio-net.akamaized.net/news/2019/10/08/171965/1108674-1000xauto-cara-membuat-mie-ayam.jpg"
+            class="card-img-top" id="clickableImage10">
+          <div class="card-body">
+            <p class="card-text" id="infoItm10">Mie Ayam</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga10">6000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://cdn.idntimes.com/content-images/post/20220907/fromandroid-9647cfe53305a4f1db37f7ce779067c9-f1b823293fc3b6ab7a81be1e764193f0.jpg" class="card-img-top"
+            id="clickableImage11" style="height: -30%">
+          <div class="card-body">
+            <p class="card-text" id="infoItm11">Baso Bakar</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga11">2000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://img-global.cpcdn.com/recipes/5e9571c2b6870b01/680x482cq70/isi-piringku-lunch-nasi-rames-nasi-campur-sederhana-foto-resep-utama.jpg"
+            class="card-img-top" id="clickableImage12">
+          <div class="card-body">
+            <p class="card-text" id="infoItm12">Nasi Rames</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga12">10000</span>
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-100 d-flex justify-content-end p-2">
+    <i class='bx bx-cart' id="cart-icon" style="font-size: 3rem; cursor: pointer!important; margin-top: 6px; color: rgb(0, 0, 0); margin-right: 85%;"></i>
+    <button class="btn px-5" id="button" onclick="exportToTxt()" style="border-radius: 15px;">Pesan Sekarang!</button>
+  </div>
+
+</body>
+<script src="fungsi.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</html>
